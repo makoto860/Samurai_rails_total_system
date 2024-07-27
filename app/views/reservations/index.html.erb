@@ -1,0 +1,23 @@
+<h1>reservations/index</h1>
+<h1>予約一覧</h1>
+<table>
+  <thead>
+    <p>合計料金</p>
+    <tr>
+      <th>名前</th>
+      <th>価格</th>
+      <th>合計個数</th>
+      <th>合計価格(価格*合計個数)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @reservations.each do |reservation| %>
+      <tr>
+        <td><%= reservation.product.name %></td>
+        <td><%= reservation.product.price %>円</td>
+        <td><%= reservation.total_quantity %>個</td>
+        <td><%= reservation.sum_of_price %>円</td>
+      </tr>
+      <% end %>
+  </tbody>
+</table>

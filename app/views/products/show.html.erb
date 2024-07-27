@@ -1,0 +1,15 @@
+<h1>products/show.html.erb</h1>
+<h1>productの詳細</h1>
+<div class="row w-75">
+  <p><%= @product.name %></p>
+  <p><%= @product.price %></p>
+</div>
+
+<% if user_signed_in? %>
+<%= form_with url: reservations_index_path, method: :get, local: true, data: { turbo: false } do |f| %>
+  <%= f.hidden_field :product_id, value: @product.id, name: 'reservation[product_id]' %>
+  <%= f.hidden_field :user_id, value: current_user.id, name: 'reservation[user_id]' %>
+  <%= f.number_field :total_quantity, value: 1, name: 'reservation[total_quantity]' %>
+  <%= f.submit "予約する" %>
+<% end %>
+<% end %>
